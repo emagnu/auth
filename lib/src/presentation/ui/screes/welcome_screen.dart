@@ -2,6 +2,9 @@
 //  Import LIBRARIES
 import 'package:flutter/material.dart';
 //  Import FILES
+import '../sharedwidgets/styled_text.dart';
+import '../welcome/sign_in_form.dart';
+import '../welcome/sign_up_form.dart';
 //  //  ///
 
 class WelcomeScreen extends StatelessWidget {
@@ -18,12 +21,16 @@ class WelcomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 48),
-          child: const Column(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              // StyleHeading('Welcome to Flutter Auth'),
+              const StyledHeadingText('Welcome to the authorisation page '),
+
               // Sign up screen
+              SignUpForm(),
+
               // Sign in screen
+              SignInForm(),
             ],
           ),
         ),

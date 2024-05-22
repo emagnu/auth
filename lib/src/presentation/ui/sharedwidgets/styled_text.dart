@@ -8,7 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 class StyledBodyText extends StatelessWidget {
   final String text;
 
-  const StyledBodyText({super.key, required this.text});
+  const StyledBodyText(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class StyledBodyText extends StatelessWidget {
 class StyledHeadingText extends StatelessWidget {
   final String text;
 
-  const StyledHeadingText({super.key, required this.text});
+  const StyledHeadingText(this.text, {super.key});
 
   @override
   Widget build(BuildContext context) {
