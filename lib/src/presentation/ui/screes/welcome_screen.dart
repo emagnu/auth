@@ -8,13 +8,18 @@ import '../welcome/sign_in_form.dart';
 import '../welcome/sign_up_form.dart';
 //  //  ///
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    bool isSignUpForm = true;
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
 
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  bool isSignUpForm = true;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Auth'),
@@ -37,7 +42,9 @@ class WelcomeScreen extends StatelessWidget {
                     const StyledBodyText('Already have an account?'),
                     TextButton(
                       onPressed: () {
-                        isSignUpForm = false;
+                        setState(() {
+                          isSignUpForm = false;
+                        });
                       },
                       child: Text(
                         'Sign-in instead',
@@ -49,7 +56,26 @@ class WelcomeScreen extends StatelessWidget {
                 ),
 
               // Sign in screen
-              SignInForm(),
+              if (!isSignUpForm)
+                Column(
+                  children: <Widget>[
+                    // Sign up screen
+                    SignInForm(),
+                    const StyledBodyText('Already have an account?'),
+                    TextButton(
+                      onPressed: () {
+                        setState(() {
+                          isSignUpForm = true;
+                        });
+                      },
+                      child: Text(
+                        'Sign-up instead',
+                        style: GoogleFonts.poppins(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
+                ),
             ],
           ),
         ),
