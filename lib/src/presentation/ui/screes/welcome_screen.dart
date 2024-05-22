@@ -1,6 +1,7 @@
 //  //  ///
 //  Import LIBRARIES
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 //  Import FILES
 import '../sharedwidgets/styled_text.dart';
 import '../welcome/sign_in_form.dart';
@@ -12,6 +13,8 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isSignUpForm = true;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Flutter Auth'),
@@ -26,8 +29,24 @@ class WelcomeScreen extends StatelessWidget {
             children: <Widget>[
               const StyledHeadingText('Welcome to the authorisation page '),
 
-              // Sign up screen
-              SignUpForm(),
+              if (isSignUpForm)
+                Column(
+                  children: <Widget>[
+                    // Sign up screen
+                    SignUpForm(),
+                    const StyledBodyText('Already have an account?'),
+                    TextButton(
+                      onPressed: () {
+                        isSignUpForm = false;
+                      },
+                      child: Text(
+                        'Sign-in instead',
+                        style: GoogleFonts.poppins(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  ],
+                ),
 
               // Sign in screen
               SignInForm(),
