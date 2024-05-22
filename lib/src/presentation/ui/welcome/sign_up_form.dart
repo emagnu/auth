@@ -1,5 +1,6 @@
 //  //  ///
 //  Import LIBRARIES
+import 'package:auth/src/application/services/auth_service.dart';
 import 'package:auth/src/presentation/ui/sharedwidgets/styled_button.dart';
 import 'package:auth/src/presentation/ui/sharedwidgets/styled_text.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,13 @@ class SignUpForm extends StatelessWidget {
             //  Submit button
             StyledButton(
               onPressed: () async {
-                _formKey.currentState!.validate();
+                if (_formKey.currentState!.validate()) {
+                  debugPrint(_emaiController.text);
+                  debugPrint(_passwordController.text);
+                  final user = await AuthService.signUp(
+                      _emaiController.text.trim(),
+                      _passwordController.text.trim());
+                }
               },
               child: const Text('Sign Up'),
             ),
