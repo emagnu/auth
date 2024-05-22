@@ -6,34 +6,30 @@ import 'package:google_fonts/google_fonts.dart';
 //  //  ///
 
 class StyledBodyText extends StatelessWidget {
-  final String text;
+  const StyledBodyText(this.text, {super.key});
 
-  const StyledBodyText({super.key, required this.text});
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: GoogleFonts.poppins(
-        textStyle: TextStyle(color: Colors.grey[800]),
-      ),
-    );
+    return Text(text,
+        style: GoogleFonts.poppins(
+          textStyle: TextStyle(color: Colors.grey[800]),
+        ));
   }
 }
 
 class StyledHeadingText extends StatelessWidget {
-  final String text;
+  const StyledHeadingText(this.text, {super.key});
 
-  const StyledHeadingText({super.key, required this.text});
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: GoogleFonts.poppins(
-        textStyle: TextStyle(color: Colors.grey[800]),
-      ),
-    );
+    return Text(text,
+        style: GoogleFonts.poppins(
+          textStyle: TextStyle(color: Colors.blue[500], fontSize: 32),
+        ));
   }
 }
 
