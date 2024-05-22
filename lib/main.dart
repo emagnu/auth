@@ -1,11 +1,18 @@
 //  //  ///
 //  Import LIBRARIES
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 //  Import FILES
+import 'firebase_options.dart';
 import 'src/presentation/ui/screes/welcome_screen.dart';
 //  //  ///
 
-void main() {
+// ...
+
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
